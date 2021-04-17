@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using System;
@@ -25,10 +26,9 @@ namespace demoMongoDB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<BoMayDatabaseSettings>(Configuration.GetSection(nameof(BoMayDatabaseSettings)));
-            services.AddSingleton<IBoMayDatabaseSettings>(sp => sp.GetRequiredService<IOptions<IBoMayDatabaseSettings>>().Value);
-            services.AddSingleton<InformationService>();
-            services.AddControllersWithViews();
+            services.Configure<BoMayDatabaseSettings>(Configuration.GetSection("BoMayDatabaseSettings"));
+            services.TryAddScoped<InformationService>();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,18 +10,18 @@ namespace demoMongoDB.Models
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public string id { get; set; }
-        [BsonElement("name")]
+        public string _id { get; set; }
+     
         public string name { get; set; }
-        [BsonElement("age")]
-        public int age { get; set; }
-        [BsonElement("phone")]
+       
+        public string age { get; set; }
+  
         public string phone { get; set; }
-        [BsonElement("email")]
+  
         public string email { get; set; }
-        [BsonElement("address")]
+  
         public string address { get; set; }
-        [BsonElement("active")]
+
         public bool active { get; set; }
     }
 }

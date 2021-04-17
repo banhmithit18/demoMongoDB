@@ -13,19 +13,14 @@ namespace demoMongoDB.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly InformationService InfoSrv;
+       
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-        
-            var data = InfoSrv.GetAll();
-            return View(data);
-        }
+
 
         public IActionResult Privacy()
         {
